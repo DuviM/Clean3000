@@ -11,12 +11,12 @@ const router = createRouter({
     {
       name: 'Formulaire',
       path: '/formulaire',
-      component : () => import('')
+      component : () => import('../views/Formulaire.vue')
     },
     {
       name: 'Avis',
       path: '/avis',
-      component : () => import('')
+      component : () => import('../views/Avis.vue')
     },
   ]
 });
