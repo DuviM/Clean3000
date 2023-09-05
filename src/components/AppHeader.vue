@@ -14,7 +14,7 @@
 
 <template>
   <header class="bg-gray-900 flex justify-between items-center px-6 py-4">
-    <img src="../assets/images/logo-clean3000-transparent.png" alt="logo" class="">
+    <img src="../assets/images/logo-clean3000-transparent.png" alt="logo" class="w-36 md:w-72">
     <nav>
       <div class="flex items-center justify-end">        
         <div @click="toggleNav" class="flex md:hidden">

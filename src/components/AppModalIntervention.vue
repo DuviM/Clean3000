@@ -8,8 +8,8 @@ const props = defineProps({
 
 <template>
   <Transition name="modal">
-    <div v-if="show" class="fixed bg-black bg-opacity-50 z-50 top-0 left-0 h-full w-full flex transition-opacity ease-in-out duration-300" @click.self="$emit('close')">
-      <div class="w-full max-w-7xl m-auto py-[20px] px-[30px] bg-gray-700 rounded transition-all ease-in-out duration-300 shadow-xl">
+    <div v-if="show" class="overflow-scroll fixed bg-black bg-opacity-50 z-50 top-0 left-0  h-full w-full flex transition-opacity ease-in-out duration-300" @click.self="$emit('close')">
+      <div class="w-5/6 md:w-full max-w-7xl m-auto py-[20px] px-[30px] bg-gray-700 rounded transition-all ease-in-out duration-300 shadow-xl">
         <div class="modal-header">
           <slot name="header">            
           </slot>

@@ -13,8 +13,7 @@
           },
           save() {
             const { isEmpty, data } = this.$refs.signaturePad.saveSignature();
-      
-            alert("Open DevTools see the save data.");
+
             console.log(isEmpty);
             console.log(data);
           },
@@ -52,10 +51,10 @@ import AppButton from './AppButton.vue';
         <AppButton @click="undo" class="text-xs">Undo</AppButton>
         <AppButton @click="save" class="text-xs">Save</AppButton>
       </div>
-      <div class="flex flex-col md:flex-row">
+      <!-- <div class="flex flex-col md:flex-row">
         <AppButton @click="change" class="text-xs">Change</AppButton>
         <AppButton @click="resume" class="text-xs">Resume</AppButton>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
