@@ -1,16 +1,17 @@
-<script setup>
-  
+<script setup>  
   import AppButton from '../components/AppButton.vue';
   import AppSignaturePad from '../components/AppSignaturePad.vue';
+  import { useInterventionStore } from '../store/Intervention';
+
+  const intervention = useInterventionStore();
   
-
-
+  console.log(intervention.intervention);
 </script>
 
 <template>
   <h1 class="text-bold text-3xl text-gray-50 text-center my-10">FORMULAIRE D'INTERVENTION</h1>
   <div class="border rounded-md mx-2 md:mx-24 my-6 pb-8">
-    <form action="" method="get">
+    <form @submit.prevent="submitForm" action="" method="get">
       <div class="flex flex-col md:flex-row items-center justify-evenly mt-6">
         <fieldset class="rounded border border-solid border-gray-50 flex flex-col px-6 pb-2">
           <legend class="text-gray-50 px-2">
@@ -21,12 +22,12 @@
             <label for="particulier" class="text-gray-50 ml-2">Particulier</label>
           </div>
           <div>
-            <input type="checkbox" name="professionnel" id="professionnel" v-model="client" value="professionnel">
+            <input type="checkbox" name="professionnel" id="professionnel" v-model="client" value="professionnel" >
             <label for="professionnel" class="text-gray-50 ml-2">Professionnel</label>
           </div>
         </fieldset>
         <div>
-          <input type="text" placeholder="Nom du client/Raison sociale" class="bg-gray-500 text-gray-50 rounded w-72 p-2 mt-2 md:mt-0" v-model="clientName">
+          <input type="text" placeholder="Nom du client/Raison sociale" class="bg-gray-500 text-gray-50 rounded w-72 p-2 mt-2 md:mt-0" v-model="clientName" @press.enter="intervention.updateNameInput()">
         </div>
       </div>
       <div class="flex flex-col md:flex-row items-center justify-evenly mt-6">
@@ -47,7 +48,7 @@
           <AppSignaturePad class="h-[150px] w-[300px]" v-model="signatureClient"></AppSignaturePad>
         </div>
         <div>
-          <AppButton type="submit" class="mt-16 md:mt-8" @click="submitForm">Valider l'avis de passage</AppButton>
+          <AppButton type="submit" class="mt-16 md:mt-8" @click ="submitForm">Valider l'avis de passage</AppButton>
         </div>
       </div>
     </form>
