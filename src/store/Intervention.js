@@ -1,39 +1,30 @@
 import { defineStore } from 'pinia';
 
-export const useInterventionStore = defineStore('Intervention', {
-  state : () => ({
-    intervention :{
-      checkboxParticulier : false,
-      checkboxProfessionnel : false,
-      nameInput : '',
-      dateInput : '',
-      observations : '',
-      signatureTechnicien : null,
-      signatureClient : null,
+export const useInterventionStore = defineStore('intervention', {
+  state : () => {
+    return {
+      intervention :{
+        choix : '',
+        nomClient : '',
+        date : '',
+        observations : '',
+        signatureTechnicien: null,
+        signatureClient : null,
+      }
     }
-  }),
-
+  },
+  getters: {
+    isInterventionEmpty: (state) => {
+      return Object.keys(state.intervention).length === 0;
+    }
+  },
   actions : {
-    updateCheckboxParticulier(value) {
-      this.intervention.checkboxParticulier = value;
+    submitForm () {
+      const intervention = this.intervention;
+      console.log(intervention);
     },
-    updateCheckboxProfessionnel(value) {
-      this.intervention.checkboxProfessionnel = value;
+    clearIntervention () {
+      this.intervention = {}; 
     },
-    updateNameInput(value) {
-      this.intervention.nameInput =value;
-    },
-    updateDateInput(value) {
-      this.intervention.dateInput = value;
-    },
-    updateObservations(value) {
-      this.intervention.observations = value;
-    },
-    updateSignatureTechnicien(imageData) {
-      this.intervention.signatureTechnicien = imageData;
-    },
-    updateSignatureClient(imageData) {
-      this.intervention.signatureClient = imageData;
-    }
   }
 });
