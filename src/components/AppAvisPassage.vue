@@ -20,9 +20,9 @@ const intervention = interventionStore.intervention;
         <p class="bg-gray-500 text-gray-50 rounded w-72 p-2 mt-2 md:mt-0 text-center">{{ intervention.observations }}</p>
       </div>
       <div class="flex flex-col md:flex-row items-center justify-evenly mt-6">
-        <p>signature du technicien</p>
+        <p class="text-gray-50">signature du technicien</p>
         <img v-if="signatureTechnicien" :src="intervention.signatureTechnicien" alt="signature technicien">
-        <p>signature du client</p>
+        <p class="text-gray-50">signature du client</p>
         <img v-if="signatureClient" :src="intervention.signatureClient" alt="signature client">        
       </div>
     </div>

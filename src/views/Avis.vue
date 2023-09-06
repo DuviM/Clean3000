@@ -16,8 +16,8 @@ const submitForm = () => {
   const signatureDataTechnicien = ref.signaturePadTechnicien.saveSignature();
   const signatureDataClient = ref.signaturePadClient.saveSignature();
 
-  intervention.signatureTechnicien = signatureDataTechnicien.data
-  intervention.signatureClient = signatureDataClient.data
+  intervention.signatureTechnicien = signatureDataTechnicien.data;
+  intervention.signatureClient = signatureDataClient.data;
 
 }
 
@@ -25,7 +25,7 @@ const showModal = ref(false);
 
 const showAvis = ref(false);
 
-const clearIntervention = interventionStore.clearIntervention;
+const clearIntervention = interventionStore.clearIntervention();
 
 </script>
 
@@ -39,8 +39,10 @@ const clearIntervention = interventionStore.clearIntervention;
   </div>
   <div>
     <AppAvisPassage v-if="showAvis"></AppAvisPassage>
-    <AppButton @click="clearIntervention, showAvis = false" v-if="showAvis">ENVOYER UN MAIL</AppButton>
-    <AppButton @click="clearIntervention, showAvis = false" v-if="showAvis">ENREGISTRER</AppButton>
+    <div class="flex items-center justify-center">
+      <AppButton @click="clearIntervention, showAvis = false" v-if="showAvis">ENVOYER UN MAIL</AppButton>
+      <AppButton @click="clearIntervention, showAvis = false" v-if="showAvis">ENREGISTRER</AppButton>
+    </div>
   </div>
   <Teleport to="body">
     <AppModalIntervention :show="showModal" @close="showModal = false">
@@ -67,7 +69,7 @@ const clearIntervention = interventionStore.clearIntervention;
                         </div>
                         <div class="flex flex-col md:flex-row items-center justify-between mt-6 md:mx-48">
                           <label for="date" class="text-gray-50 ml-2">Date d'intervention :</label>
-                          <input type="datetime-local" name="date" id="date" class="bg-gray-500 text-gray-50 rounded w-72 p-2 mt-2 md:mt-0" v-model="intervention.date">
+                          <input type="dateTime-local" name="date" id="date" class="bg-gray-500 text-gray-50 rounded w-72 p-2 mt-2 md:mt-0" v-model="intervention.date">
                         </div>
                         <div class="flex flex-col md:flex-row items-center justify-between mt-6 md:mx-48">
                           <label for="observations" class="text-gray-50 ml-2">Observations :</label>
