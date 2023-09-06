@@ -11,13 +11,7 @@ const intervention = interventionStore.intervention;
 
 
 const submitForm = () => {
-  interventionStore.updateIntervention(intervention);
-  
-  const signatureDataTechnicien = ref.signaturePadTechnicien.saveSignature();
-  const signatureDataClient = ref.signaturePadClient.saveSignature();
-
-  intervention.signatureTechnicien = signatureDataTechnicien.data;
-  intervention.signatureClient = signatureDataClient.data;
+  interventionStore.updateIntervention(intervention);  
 
 }
 
@@ -25,7 +19,10 @@ const showModal = ref(false);
 
 const showAvis = ref(false);
 
-const clearIntervention = interventionStore.clearIntervention();
+const clearIntervention = () => {
+  console.log('toto');
+  interventionStore.clearIntervention();  
+}
 
 </script>
 
@@ -78,11 +75,11 @@ const clearIntervention = interventionStore.clearIntervention();
                         <div class="flex flex-col md:flex-row items-center justify-evenly mt-6">
                           <div class="flex flex-col items-center mt-0 md:mt-6">
                             <label for="signatureTechnicien" class="text-gray-50 ml-2">Signature du technicien :</label>
-                            <AppSignaturePad class="h-[150px] w-72 bg-gray-50 rounded" id="signatureTechnicien" refs="signaturPadTechnicien" :options="$options" ></AppSignaturePad>
+                            <AppSignaturePad class="h-[150px] w-72 bg-gray-50 rounded" id="signatureTechnicien" v-model="intervention.signatureTechnicien" :options="$options" ></AppSignaturePad>
                           </div>
                           <div class="flex flex-col items-center mt-16 md:mt-6 mb-4 md:mb-0">
                             <label for="signatureClient" class="text-gray-50 ml-2">Signature du client :</label>
-                            <AppSignaturePad class="h-[150px] w-72 bg-gray-50 rounded" id="signatureClient" refs="signaturePadClient" :options="$options"></AppSignaturePad>
+                            <AppSignaturePad class="h-[150px] w-72 bg-gray-50 rounded" id="signatureClient" v-model="intervention.signatureClient" :options="$options"></AppSignaturePad>
                           </div>
                           <div>                            
                             <AppButton type="submit" class="mt-16 md:mt-8" @click ="submitForm, showModal = false, showAvis = true">Valider les informations</AppButton>

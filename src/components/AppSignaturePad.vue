@@ -1,4 +1,5 @@
       <script>
+      import { defineProps, defineEmits } from 'vue';
       
       export default {
         name: "App",
@@ -7,7 +8,11 @@
             penColor: "#c0f",
           },
         }),
+        emits: ['signatureOn'],
         methods: {
+          emitSignature() {
+            this.$emit('signatureOn', this.signatureData);
+          },
           undo() {
             this.$refs.signaturePad.undoSignature();
           },
@@ -32,6 +37,7 @@
       </script>
 
 <script setup>
+
 import AppButton from './AppButton.vue';
 
 </script>
@@ -49,7 +55,7 @@ import AppButton from './AppButton.vue';
     <!-- <div class="flex flex-row"> -->
       <div class="flex flex-row mt-8">
         <AppButton @click="undo" class="text-xs">Undo</AppButton>
-        <AppButton @click="save" class="text-xs">Save</AppButton>
+        <AppButton type="submit" @submit.prevent="submitForm()" @click="save" class="text-xs">Save</AppButton>
       </div>
       <!-- <div class="flex flex-col md:flex-row">
         <AppButton @click="change" class="text-xs">Change</AppButton>
