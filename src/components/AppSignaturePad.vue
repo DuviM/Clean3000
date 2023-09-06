@@ -46,8 +46,8 @@ import AppButton from './AppButton.vue';
         class="bg-gray-50 rounded"
       />
     </div>
-    <div class="flex flex-row">
-      <div class="flex flex-col md:flex-row">
+    <!-- <div class="flex flex-row"> -->
+      <div class="flex flex-row mt-8">
         <AppButton @click="undo" class="text-xs">Undo</AppButton>
         <AppButton @click="save" class="text-xs">Save</AppButton>
       </div>
@@ -55,6 +55,6 @@ import AppButton from './AppButton.vue';
         <AppButton @click="change" class="text-xs">Change</AppButton>
         <AppButton @click="resume" class="text-xs">Resume</AppButton>
       </div> -->
-    </div>
+    <!-- </div> -->
   </div>
 </template>

@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia';
 
 export const useInterventionStore = defineStore('intervention', {
-  state : () => {
-    return {
+  state : () => ({
       intervention :{
         choix : '',
         nomClient : '',
@@ -12,19 +11,28 @@ export const useInterventionStore = defineStore('intervention', {
         signatureClient : null,
       }
     }
-  },
-  getters: {
-    isInterventionEmpty: (state) => {
-      return Object.keys(state.intervention).length === 0;
-    }
-  },
+  ),
+  // getters: {
+  //   isInterventionEmpty: (state) => {
+  //     return Object.keys(state.intervention).length === 0;
+  //   }
+  // },
   actions : {
-    submitForm () {
-      const intervention = this.intervention;
-      console.log(intervention);
+
+    updateIntervention(data) {
+      this.intervention = data;
     },
+    // submitForm (intervention) {
+    //   this.intervention = intervention
+    //   console.log('turlutut');
+    // },
     clearIntervention () {
-      this.intervention = {}; 
+      this.intervention.choix = '';
+      this.intervention.nomClient = '';
+      this.intervention.date = '';
+      this.intervention.observations = '';
+      this.intervention.signatureTechnicien = null;
+      this.intervention.signatureClient = null;
     },
   }
 });
